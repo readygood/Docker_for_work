@@ -1,0 +1,16 @@
+filebeat.prospectors:
+- input_type: log
+  paths:
+    - /var/log/messages
+  exclude_lines: ["^DBG"]
+  document_type: system-log-0019
+- input_type: log
+  paths:
+    - /var/log/nginx/access.log
+  document_type: nginx-log-0019 #相对的是logstash中的type，可以在Logstash中做if判断
+output.logstash:
+  hosts: ["192.168.29.119:5044","192.168.29.119:5045"]
+  enabled: true
+  worker: 1
+  compression_level: 3
+  loadbalance: true
