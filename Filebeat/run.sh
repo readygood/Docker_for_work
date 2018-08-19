@@ -1,4 +1,5 @@
 #!/bin/bash
+
 docker container run --name filebeat --network host \
 -v /root/filebeat/conf/filebeat.yml:/usr/share/filebeat/filebeat.yml \
 -v /var/log/messages:/var/log/messages \
