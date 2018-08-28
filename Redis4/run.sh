@@ -1,4 +1,5 @@
 #!/bin/bash
+
 docker container run --name redis \
 -v /root/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf \
 -v /root/redis/log/redis.log:/var/log/redis/redis.log \
