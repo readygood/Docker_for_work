@@ -21,9 +21,7 @@ docker container run --name $DB_NAME \
 -e MYSQL_ROOT_PASSWORD="654321" \
 -v /data/zabbix-mysql:/var/lib/mysql \
 --rm -d mysql:$DB_VERS
-
 DB_IP=`docker inspect zmysql-server | grep '"IPAddress"'|sed -n 2p|awk -F" " '{print $2}'|sed 's@"\|,@@g'`
-
 docker container run --name $ZSVER_NAME \
 --network zabbix -t \
 -e DB_SERVER_HOST="$DB_IP" \
@@ -33,9 +31,7 @@ docker container run --name $ZSVER_NAME \
 -e MYSQL_ROOT_PASSWORD="654321" \
 -p 10051:10051 \
 --rm -d zabbix/zabbix-server-mysql:$ZSVER_VER
-
 ZSEV_IP=`docker inspect zabbix-server-mysql | grep '"IPAddress"'|sed -n 2p|awk -F" " '{print $2}'|sed 's@"\|,@@g'`
- 
 docker container run --name $ZNGX_NAME \
 --network zabbix -t \
 -e DB_SERVER_HOST="$DB_IP" \
