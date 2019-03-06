@@ -2,7 +2,7 @@
 yum install -y docker-ce php php-mysql
 systemctl start docker
 docker network create zabbix
-cat >> /etc/docker/daemon.json << EOF
+cat > /etc/docker/daemon.json << EOF
 {
   "registry-mirrors": ["https://yry1etev.mirror.aliyuncs.com"]
 }
